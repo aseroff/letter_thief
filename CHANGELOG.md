@@ -4,6 +4,10 @@
 * Add basic tasks for cleaning up
 * Run tests on different ruby/rails/database combinations
 
+# 0.1.1
+
+* Added a root_path for the engine
+
 # 0.1.0
 
 * Added an interceptor and database table

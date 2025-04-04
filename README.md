@@ -116,6 +116,8 @@ development:
 
 ## Development
 
+Clone the project and install dependencies with `bundle install`.
+
 You can run the tests with `bin/test`. By default they run on sqlite. To run them on postgres or mysql, specify the
 TARGET_DB.
 
@@ -124,6 +126,9 @@ bin/test #sqlite
 TARGET_DB=postgres bin/test #postgres
 TARGET_DB=mysql bin/test #mysql
 ```
+
+You can also sping up a dummy app with `bin/rails server` and work there.
+
 
 ## Contributing
 

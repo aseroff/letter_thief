@@ -1,6 +1,6 @@
 <% def database_name_from(name); (ENV.fetch("TARGET_DB", "sqlite") == "sqlite") ? "storage/#{name}.sqlite3" : name; end %>
 
-<% if ENV["TARGET_DB"] == "mysql" %>
+<% if ENV.fetch("TARGET_DB", "sqlite") == "mysql" %>
 default: &default
   adapter: mysql2
   username: root
@@ -8,7 +8,7 @@ default: &default
   host: "127.0.0.1"
   port: 3306
 
-<% elsif ENV["TARGET_DB"] == "postgres" %>
+<% elsif ENV.fetch("TARGET_DB", "sqlite") == "postgres" %>
 default: &default
   adapter: postgresql
   encoding: unicode
@@ -16,7 +16,7 @@ default: &default
   pool: 5
 #  host: localhost
 
-<% elsif ENV["TARGET_DB"] == "sqlite" %>
+<% elsif ENV.fetch("TARGET_DB", "sqlite") == "sqlite" %>
 default: &default
   adapter: sqlite3
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 50 } %>
