@@ -28,5 +28,21 @@ module LetterThief
     def multipart?
       body_text.present? && body_html.present?
     end
+
+    def self.parse(mail)
+      EmailMessage.new(
+        to: mail.to,
+        from: mail.from,
+        sender: mail.sender,
+        cc: mail.cc,
+        bcc: mail.bcc,
+        subject: mail.subject,
+        body_text: mail.text_part&.decoded || mail.body.decoded,
+        body_html: mail.html_part&.decoded,
+        headers: mail.header.to_s,
+        content_type: mail.content_type,
+        intercepted_at: Time.current
+      )
+    end
   end
 end
