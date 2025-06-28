@@ -2,7 +2,8 @@ module LetterThief
   class Observer
     def self.delivered_email(mail)
       string_io = StringIO.new(mail.to_s)
-      email = EmailMessage.new(mail).save!
+      email = EmailMessage.parse(mail)
+      email.save!
 
       if LetterThief.activestorage_available?
         Array(mail.attachments).each do |attachment|
